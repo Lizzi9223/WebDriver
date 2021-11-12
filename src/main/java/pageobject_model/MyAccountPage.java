@@ -13,9 +13,6 @@ public class MyAccountPage extends AbstractPage{
 
     private final By locatorDemoTab = By.xpath("/html/body/div[1]/div[2]/main/div/div[2]/div/div/div[2]/div/div[1]/div[2]/div[2]");
 
-//    @FindBy(xpath = "/html/body/div[1]/div[2]/main/div/div[2]/div/div/div[2]/div/div[1]/div[2]/div[2]")
-//    private WebElement demoTab;
-
     @FindBy(xpath = "//*[@id=\"root\"]/div[2]/main/div/div[2]/div/div/div[2]/div/div[3]/div/div[1]/div/div[2]/div[3]/div/div/div[1]/button")
     private WebElement setBalanceButton;
 
@@ -24,6 +21,11 @@ public class MyAccountPage extends AbstractPage{
 
     @FindBy(xpath = "//*[@id=\"root\"]/div[3]/div/div[3]/div/form/button")
     private WebElement saveChanges;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div[2]/main/div/div[2]/div/div/div[2]/div/div[3]/div/div[1]/div/div[2]/div[1]/div[1]/span[1]")
+    private WebElement balance;
+
+    private float initialBalance;
 
     public MyAccountPage(WebDriver driver){
         super(driver);
@@ -38,7 +40,8 @@ public class MyAccountPage extends AbstractPage{
         setBalanceButton.click();
 
         String value = inputArea.getAttribute("value");
-        String newValue = Integer.toString(Integer.parseInt(value)+1);
+        initialBalance = Float.parseFloat(value);
+        String newValue = Float.toString(initialBalance+1);
 
         inputArea.clear();
         inputArea.sendKeys(newValue);
@@ -48,6 +51,14 @@ public class MyAccountPage extends AbstractPage{
         driver.navigate().refresh();
 
         return this;
+    }
+
+    public boolean isNewBalanceCorrect(){
+
+        String newBalance = balance.getAttribute("innerHTML").replaceAll(",","");
+        if(Float.parseFloat(newBalance) - initialBalance == 1f)
+            return true;
+        else return false;
     }
 
 }

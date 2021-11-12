@@ -1,42 +1,44 @@
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.chrome.ChromeDriver;
-//import org.testng.Assert;
-//import org.testng.annotations.AfterMethod;
-//import org.testng.annotations.BeforeMethod;
-//import org.testng.annotations.Test;
-//
-//public class ExnessPFTest {
-//
-//    private WebDriver driver;
-//    //private DerivTrader tradePage;
-//
-//    private final String login = "qcp44330@cuoly.com";
-//    private final String password = "5@ymQMBrPyf3@3";
-//
-//    @BeforeMethod
-//    private void initializeBrowser() {
-//        driver = new ChromeDriver();
-//        tradePage = new DerivHome(driver)
-//                .openPage()
-//                .openLoginPage()
-//                .enterLogin(login)
-//                .enterPassword(password)
-//                .signIn();
-//    }
-//
-//    @Test
-//    public void putOnRiseWithSetDuration() {
-//        boolean isPositionCreated = tradePage
-//                .setDuration(1)
-//                .putOnRise()
-//                .checkCreatedPosition();
-//
-//        Assert.assertTrue(isPositionCreated);
-//    }
-//
-//    @AfterMethod
-//    private void closeBrowser() {
-//        driver.quit();
-//        driver = null;
-//    }
-//}
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import pageobject_model.ExnessHomePage;
+import pageobject_model.MyAccountPage;
+
+public class ExnessPFTest {
+
+    private WebDriver driver;
+    private MyAccountPage myAccountPage;
+
+    final String LOGIN = "marusika6464@mail.ru";
+    final String PASSWORD = "RDZ7KuLX8s6aWUt";
+
+    @BeforeMethod
+    private void initializeBrowser() {
+        driver = new FirefoxDriver();
+        myAccountPage = new ExnessHomePage(driver)
+                .openPage()
+                .openLoginPage()
+                .inputLogin(LOGIN)
+                .inputPassword(PASSWORD)
+                .signIn();
+    }
+
+    @Test
+    public void setBalance() {
+        boolean isNewBalanceCorrect = myAccountPage
+                .setBalance()
+                .isNewBalanceCorrect();
+
+        Assert.assertTrue(isNewBalanceCorrect);
+    }
+
+    @AfterMethod
+    private void closeBrowser() {
+        driver.quit();
+        driver = null;
+    }
+}

@@ -19,7 +19,6 @@ public class ExnessHomePage extends AbstractPage{
         String currentHandle = driver.getWindowHandle();
         String URLToClick = signInButton.getAttribute("href");
         driver.get(URLToClick);
-        //signInButtom.click();
         return new ExnessSignInPage(driver);
     }
 

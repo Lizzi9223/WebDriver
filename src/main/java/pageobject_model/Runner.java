@@ -20,6 +20,10 @@ public class Runner {
                 .signIn()
                 .setBalance();
 
+        boolean isNewBalanceCorrect = myAccountPage.isNewBalanceCorrect();
+
+        System.out.println(isNewBalanceCorrect);
+
         //driver.quit();
 
     }
