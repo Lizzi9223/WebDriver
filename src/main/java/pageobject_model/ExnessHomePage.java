@@ -8,7 +8,7 @@ public class ExnessHomePage extends AbstractPage{
 
     private final String HOME_PAGE_URL = "https://exness.com";
 
-    @FindBy(xpath = "//*[@id=\"sidebar\"]/aside/div/div[2]/div[1]/div[1]/a")
+    @FindBy(xpath = "//div[@class='sidebar-tabs__buttons']/a")
     private WebElement signInButton;
 
     public ExnessHomePage(WebDriver driver) {

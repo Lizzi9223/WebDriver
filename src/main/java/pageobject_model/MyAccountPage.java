@@ -11,27 +11,17 @@ import java.time.Duration;
 
 public class MyAccountPage extends AbstractPage{
 
-    private final By locatorDemoTab = By.xpath("/html/body/div[1]/div[2]/main/div/div[2]/div/div/div[2]/div/div[1]/div[2]/div[2]");
+    private final By locatorDemoTab = By.xpath("//div[@class='Tabs_container__2lcvP AccountsPage_tabs__iedhG']/div[contains(text(),'Demo')]");
 
-//    @FindBy(xpath = "//*[@id=\"root\"]/div[2]/main/div/div[2]/div/div/div[2]/div/div[3]/div/div[1]/div/div[2]/div[3]/div/div/div[1]/button")
-//    private WebElement setBalanceButton;
+    private final By locatorSetBalance = By.xpath("//button[contains(text(),'Set Balance')]");
 
-    private final By locatorSetBalance = By.xpath
-            ("//*[@id=\"root\"]/div[2]/main/div/div[2]/div/div/div[2]/div/div[3]/div/div[1]/div/div[2]/div[3]/div/div/div[1]/button");
+    private final By locatorBalance = By.xpath("//div/span[@class='Money_balanceLarge__2DKXD']");
 
     @FindBy(id = "amount")
     private WebElement inputArea;
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div[3]/div/div[3]/div/form/button")
+    @FindBy(xpath = "//form/button")
     private WebElement saveChanges;
-
-    //@FindBy(xpath = "//*[@id=\"root\"]/div[2]/main/div/div[2]/div/div/div[2]/div/div[3]/div/div[1]/div/div[2]/div[1]/div[1]/span[1]")
-    //@FindBy(xpath = "//div/span[@class='Money_balanceLarge__2DKXD']")
-//    @FindBy(className = "Money_balanceLarge__2DKXD")
-//    private WebElement balance;
-
-    private final By locatorBalance = By.xpath("//div/span[@class='Money_balanceLarge__2DKXD']");
-
 
     private float initialBalance;
 
@@ -64,11 +54,6 @@ public class MyAccountPage extends AbstractPage{
     }
 
     public boolean isNewBalanceCorrect(){
-
-//        String newBalance = balance.getAttribute("innerHTML").replaceAll(",","");
-//        if(Float.parseFloat(newBalance) - initialBalance == 1f)
-//            return true;
-//        else return false;
 
         WebElement balance = new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
                 .until(ExpectedConditions.presenceOfElementLocated(locatorBalance));

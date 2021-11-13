@@ -17,8 +17,6 @@ public class ExnessPFTest {
     final String LOGIN = "marusika6464@mail.ru";
     final String PASSWORD = "RDZ7KuLX8s6aWUt";
 
-
-
     @BeforeMethod
     private void initializeBrowser() {
         driver = new FirefoxDriver();
@@ -35,12 +33,6 @@ public class ExnessPFTest {
         boolean isNewBalanceCorrect = myAccountPage
                 .setBalance()
                 .isNewBalanceCorrect();
-
-//        MyAccountPage page = myAccountPage
-//                .setBalance();
-//
-//        boolean isNewBalanceCorrect =
-//                page.isNewBalanceCorrect();
 
         Assert.assertTrue(isNewBalanceCorrect);
     }

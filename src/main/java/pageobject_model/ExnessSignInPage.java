@@ -16,7 +16,7 @@ public class ExnessSignInPage extends AbstractPage{
     @FindBy(id = "password")
     private WebElement passwordInput;
 
-    @FindBy(xpath = "//*[@id=\"content\"]/div[1]/div[2]/signin-form/form/exwc-button/button")
+    @FindBy(xpath = "//exwc-button/button[@class='I9zSN6It64oATxkCVzN-j _3hH3VM03IxMiiGzxTRPpcN _2E_LesaXlBEyEBJXyaBQe-']")
     private WebElement continueButton;
 
     public ExnessSignInPage(WebDriver driver) {
