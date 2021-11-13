@@ -24,7 +24,7 @@ public class Runner {
 
         System.out.println(isNewBalanceCorrect);
 
-        //driver.quit();
+        driver.quit();
 
     }
 }
